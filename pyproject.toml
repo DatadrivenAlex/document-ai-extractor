@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "document-ai-extractor"
+version = "0.1.0"
+description = "Extract structured fields from invoices and receipts."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Alexandru Cojocari" }]
+dependencies = [
+    "fastapi>=0.115",
+    "pydantic>=2.7",
+    "pdfplumber>=0.11",
+    "pytesseract>=0.3.13",
+    "Pillow>=10.4",
+    "reportlab>=4.2",
+    "python-multipart>=0.0.12",
+    "uvicorn>=0.32",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.27",
+    "pytest>=8.3",
+    "ruff>=0.7",
+]
+
+[project.scripts]
+document-ai = "document_ai.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["document_ai*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q --tb=short"
+filterwarnings = [
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated:UserWarning",
+]

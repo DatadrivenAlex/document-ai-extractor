@@ -1,0 +1,1064 @@
+{
+  "count": 40,
+  "layout_counts": {
+    "labeled": 10,
+    "prose": 10,
+    "receipt": 10,
+    "table": 10
+  },
+  "markdown": "Corpus: seed 42, 40 digital PDFs (10 labeled, 10 prose, 10 receipt, 10 table), text via pdfplumber. Rules only versus rules plus the deterministic mock provider.\n\n| Field | Rules only | Rules + mock LLM |\n| --- | --- | --- |\n| Document type | 40/40 (100.0%) | 40/40 (100.0%) |\n| Vendor | 30/40 (75.0%) | 40/40 (100.0%) |\n| Invoice / receipt number | 40/40 (100.0%) | 40/40 (100.0%) |\n| Issue date | 30/40 (75.0%) | 40/40 (100.0%) |\n| Due date | 30/40 (75.0%) | 40/40 (100.0%) |\n| Currency | 30/40 (75.0%) | 40/40 (100.0%) |\n| Subtotal | 30/40 (75.0%) | 40/40 (100.0%) |\n| VAT rate | 30/40 (75.0%) | 40/40 (100.0%) |\n| VAT amount | 30/40 (75.0%) | 40/40 (100.0%) |\n| Total | 30/40 (75.0%) | 40/40 (100.0%) |\n| Line items | 30/40 (75.0%) | 40/40 (100.0%) |\n| All field checks | 350/440 (79.5%) | 440/440 (100.0%) |\n| Document exact match | 30/40 (75.0%) | 40/40 (100.0%) |\n| Validation pass | 30/40 (75.0%) | 40/40 (100.0%) |\n\n| Layout | Documents | Rules exact | Mock exact |\n| --- | --- | --- | --- |\n| labeled | 10 | 10/10 (100.0%) | 10/10 (100.0%) |\n| prose | 10 | 0/10 (0.0%) | 10/10 (100.0%) |\n| receipt | 10 | 10/10 (100.0%) | 10/10 (100.0%) |\n| table | 10 | 10/10 (100.0%) | 10/10 (100.0%) |\n\nThese figures are exact-match scores on the synthetic corpus above. They are not a measurement on real vendor invoices. The prose layout is outside the rule grammar; the mock provider is a deterministic parser for that wording, not a neural model.",
+  "modes": {
+    "rules": {
+      "document_exact_match": {
+        "accuracy": 0.75,
+        "correct": 30,
+        "total": 40
+      },
+      "failures": [
+        {
+          "actual": null,
+          "expected": "Cafe Lumen",
+          "field": "vendor",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2025-02-17",
+          "field": "issue_date",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2025-03-03",
+          "field": "due_date",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "USD",
+          "field": "currency",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "149.20",
+          "field": "subtotal",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0",
+          "field": "vat_rate",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.00",
+          "field": "vat_amount",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "149.20",
+          "field": "total",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "Notebook",
+              "line_total": "4.20",
+              "quantity": "1",
+              "unit_price": "4.20"
+            },
+            {
+              "description": "Desk lamp",
+              "line_total": "128.00",
+              "quantity": "4",
+              "unit_price": "32.00"
+            },
+            {
+              "description": "Croissant",
+              "line_total": "17.00",
+              "quantity": "5",
+              "unit_price": "3.40"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_004",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Paperplane Supplies",
+          "field": "vendor",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2024-03-08",
+          "field": "issue_date",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2024-04-07",
+          "field": "due_date",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "USD",
+          "field": "currency",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "5060.00",
+          "field": "subtotal",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.07",
+          "field": "vat_rate",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "354.20",
+          "field": "vat_amount",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "5414.20",
+          "field": "total",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "Server migration",
+              "line_total": "5000.00",
+              "quantity": "4",
+              "unit_price": "1250.00"
+            },
+            {
+              "description": "Cloud storage plan",
+              "line_total": "60.00",
+              "quantity": "4",
+              "unit_price": "15.00"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_008",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Brightline Studio",
+          "field": "vendor",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2024-09-03",
+          "field": "issue_date",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2024-09-17",
+          "field": "due_date",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "GBP",
+          "field": "currency",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "621.00",
+          "field": "subtotal",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0",
+          "field": "vat_rate",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.00",
+          "field": "vat_amount",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "621.00",
+          "field": "total",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "Notebook",
+              "line_total": "21.00",
+              "quantity": "5",
+              "unit_price": "4.20"
+            },
+            {
+              "description": "Consulting hour",
+              "line_total": "600.00",
+              "quantity": "5",
+              "unit_price": "120.00"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_012",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Acme GmbH",
+          "field": "vendor",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2024-04-16",
+          "field": "issue_date",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2024-04-30",
+          "field": "due_date",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "USD",
+          "field": "currency",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "9.90",
+          "field": "subtotal",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0",
+          "field": "vat_rate",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.00",
+          "field": "vat_amount",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "9.90",
+          "field": "total",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "USB-C cable",
+              "line_total": "9.90",
+              "quantity": "1",
+              "unit_price": "9.90"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_016",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Acme GmbH",
+          "field": "vendor",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2025-07-07",
+          "field": "issue_date",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2025-07-21",
+          "field": "due_date",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "EUR",
+          "field": "currency",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "211.40",
+          "field": "subtotal",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.05",
+          "field": "vat_rate",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "10.57",
+          "field": "vat_amount",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "221.97",
+          "field": "total",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "Consulting hour",
+              "line_total": "120.00",
+              "quantity": "1",
+              "unit_price": "120.00"
+            },
+            {
+              "description": "Croissant",
+              "line_total": "13.60",
+              "quantity": "4",
+              "unit_price": "3.40"
+            },
+            {
+              "description": "Cloud storage plan",
+              "line_total": "75.00",
+              "quantity": "5",
+              "unit_price": "15.00"
+            },
+            {
+              "description": "Espresso",
+              "line_total": "2.80",
+              "quantity": "1",
+              "unit_price": "2.80"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_020",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Blacksea Retail",
+          "field": "vendor",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2023-04-27",
+          "field": "issue_date",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2023-05-11",
+          "field": "due_date",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "GBP",
+          "field": "currency",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "73.90",
+          "field": "subtotal",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.20",
+          "field": "vat_rate",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "14.78",
+          "field": "vat_amount",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "88.68",
+          "field": "total",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "USB-C cable",
+              "line_total": "9.90",
+              "quantity": "1",
+              "unit_price": "9.90"
+            },
+            {
+              "description": "Desk lamp",
+              "line_total": "64.00",
+              "quantity": "2",
+              "unit_price": "32.00"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_024",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Linden Apothecary",
+          "field": "vendor",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2023-01-17",
+          "field": "issue_date",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2023-02-16",
+          "field": "due_date",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "GBP",
+          "field": "currency",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "360.00",
+          "field": "subtotal",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.07",
+          "field": "vat_rate",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "25.20",
+          "field": "vat_amount",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "385.20",
+          "field": "total",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "Consulting hour",
+              "line_total": "360.00",
+              "quantity": "3",
+              "unit_price": "120.00"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_028",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Mesa Components",
+          "field": "vendor",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2025-01-26",
+          "field": "issue_date",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2025-02-09",
+          "field": "due_date",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "EUR",
+          "field": "currency",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "154.40",
+          "field": "subtotal",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.20",
+          "field": "vat_rate",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "30.88",
+          "field": "vat_amount",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "185.28",
+          "field": "total",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "Consulting hour",
+              "line_total": "120.00",
+              "quantity": "1",
+              "unit_price": "120.00"
+            },
+            {
+              "description": "A4 paper ream",
+              "line_total": "19.20",
+              "quantity": "3",
+              "unit_price": "6.40"
+            },
+            {
+              "description": "Croissant",
+              "line_total": "6.80",
+              "quantity": "2",
+              "unit_price": "3.40"
+            },
+            {
+              "description": "Notebook",
+              "line_total": "8.40",
+              "quantity": "2",
+              "unit_price": "4.20"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_032",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Paperplane Supplies",
+          "field": "vendor",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2024-12-20",
+          "field": "issue_date",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2025-01-19",
+          "field": "due_date",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "USD",
+          "field": "currency",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "72.50",
+          "field": "subtotal",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0",
+          "field": "vat_rate",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.00",
+          "field": "vat_amount",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "72.50",
+          "field": "total",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "A4 paper ream",
+              "line_total": "12.80",
+              "quantity": "2",
+              "unit_price": "6.40"
+            },
+            {
+              "description": "USB-C cable",
+              "line_total": "49.50",
+              "quantity": "5",
+              "unit_price": "9.90"
+            },
+            {
+              "description": "Croissant",
+              "line_total": "10.20",
+              "quantity": "3",
+              "unit_price": "3.40"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_036",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "Copper Kettle",
+          "field": "vendor",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2023-01-01",
+          "field": "issue_date",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "2023-01-31",
+          "field": "due_date",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "GBP",
+          "field": "currency",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "147.40",
+          "field": "subtotal",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "0.07",
+          "field": "vat_rate",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "10.32",
+          "field": "vat_amount",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": null,
+          "expected": "157.72",
+          "field": "total",
+          "id": "invoice_040",
+          "layout": "prose"
+        },
+        {
+          "actual": [],
+          "expected": [
+            {
+              "description": "Espresso",
+              "line_total": "14.00",
+              "quantity": "5",
+              "unit_price": "2.80"
+            },
+            {
+              "description": "Whiteboard marker",
+              "line_total": "5.40",
+              "quantity": "3",
+              "unit_price": "1.80"
+            },
+            {
+              "description": "Desk lamp",
+              "line_total": "128.00",
+              "quantity": "4",
+              "unit_price": "32.00"
+            }
+          ],
+          "field": "line_items",
+          "id": "invoice_040",
+          "layout": "prose"
+        }
+      ],
+      "field_accuracy": {
+        "currency": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "document_number": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "document_type": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "due_date": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "issue_date": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "line_items": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "subtotal": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "total": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "vat_amount": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "vat_rate": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "vendor": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        }
+      },
+      "field_checks": {
+        "accuracy": 0.7955,
+        "correct": 350,
+        "total": 440
+      },
+      "per_layout": {
+        "labeled": {
+          "document_exact_match": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          }
+        },
+        "prose": {
+          "document_exact_match": {
+            "accuracy": 0.0,
+            "correct": 0,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 0.0,
+            "correct": 0,
+            "total": 10
+          }
+        },
+        "receipt": {
+          "document_exact_match": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          }
+        },
+        "table": {
+          "document_exact_match": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          }
+        }
+      },
+      "validation_pass": {
+        "accuracy": 0.75,
+        "correct": 30,
+        "total": 40
+      }
+    },
+    "rules_plus_mock_llm": {
+      "document_exact_match": {
+        "accuracy": 1.0,
+        "correct": 40,
+        "total": 40
+      },
+      "failures": [],
+      "field_accuracy": {
+        "currency": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "document_number": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "document_type": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "due_date": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "issue_date": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "line_items": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "subtotal": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "total": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "vat_amount": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "vat_rate": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        },
+        "vendor": {
+          "accuracy": 1.0,
+          "correct": 40,
+          "total": 40
+        }
+      },
+      "field_checks": {
+        "accuracy": 1.0,
+        "correct": 440,
+        "total": 440
+      },
+      "per_layout": {
+        "labeled": {
+          "document_exact_match": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          }
+        },
+        "prose": {
+          "document_exact_match": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          }
+        },
+        "receipt": {
+          "document_exact_match": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          }
+        },
+        "table": {
+          "document_exact_match": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          },
+          "documents": 10,
+          "validation_pass": {
+            "accuracy": 1.0,
+            "correct": 10,
+            "total": 10
+          }
+        }
+      },
+      "validation_pass": {
+        "accuracy": 1.0,
+        "correct": 40,
+        "total": 40
+      }
+    }
+  },
+  "notes": "Exact-match accuracy on seeded synthetic digital PDFs. The prose layout is outside the rule grammar and is recovered by the mock provider, which is a deterministic parser rather than a neural model. These numbers are not a measurement on real vendor invoices.",
+  "seed": 42,
+  "text_source": "digital PDF via pdfplumber"
+}
